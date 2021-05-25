@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppNews">
-        <activity android:name=".ArticleActivity"></activity>
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.NewsAppStarter">
+        <activity android:name=".activity.FavoriteActivity"></activity>
+        <activity android:name=".activity.ArticleActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
