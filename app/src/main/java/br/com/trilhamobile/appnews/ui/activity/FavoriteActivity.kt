@@ -1,4 +1,4 @@
-package br.com.trilhamobile.appnews.activity
+package br.com.trilhamobile.appnews.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

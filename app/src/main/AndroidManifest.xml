@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsAppStarter">
-        <activity android:name=".activity.SearchActivity"></activity>
-        <activity android:name=".activity.FavoriteActivity" />
-        <activity android:name=".activity.ArticleActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="br.com.trilhamobile.appnews.ui.activity.SearchActivity"></activity>
+        <activity android:name="br.com.trilhamobile.appnews.ui.activity.FavoriteActivity" />
+        <activity android:name="br.com.trilhamobile.appnews.ui.activity.ArticleActivity" />
+        <activity android:name="br.com.trilhamobile.appnews.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
