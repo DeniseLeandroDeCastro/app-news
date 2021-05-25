@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.trilhamobile.appnews.R
 
-class ArticleActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_article)
+class ArticleActivity : AbstractActivity() {
+    override fun getLayout(): Int = R.layout.activity_article
+
+    override fun onInject() {
+        TODO("Not yet implemented")
     }
+
 }
