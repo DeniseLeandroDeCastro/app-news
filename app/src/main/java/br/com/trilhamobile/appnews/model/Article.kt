@@ -1,4 +1,4 @@
-package br.com.trilhamobile.appnews.activity.model
+package br.com.trilhamobile.appnews.model
 
 import java.io.Serializable
 

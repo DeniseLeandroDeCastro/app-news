@@ -1,4 +1,4 @@
-package br.com.trilhamobile.appnews.activity.utils
+package br.com.trilhamobile.appnews.utils
 
 class Constantes {
 

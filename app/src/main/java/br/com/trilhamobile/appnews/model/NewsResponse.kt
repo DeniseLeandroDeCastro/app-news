@@ -1,4 +1,4 @@
-package br.com.trilhamobile.appnews.activity.model
+package br.com.trilhamobile.appnews.model
 
 data class NewsResponse(
     val articles: MutableList<Article>,

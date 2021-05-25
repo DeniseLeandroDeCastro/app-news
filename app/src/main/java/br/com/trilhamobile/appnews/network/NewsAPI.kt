@@ -1,7 +1,7 @@
-package br.com.trilhamobile.appnews.activity.network
+package br.com.trilhamobile.appnews.network
 
-import br.com.trilhamobile.appnews.activity.model.NewsResponse
-import br.com.trilhamobile.appnews.activity.utils.Constantes.Companion.API_KEY
+import br.com.trilhamobile.appnews.model.NewsResponse
+import br.com.trilhamobile.appnews.utils.Constantes.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

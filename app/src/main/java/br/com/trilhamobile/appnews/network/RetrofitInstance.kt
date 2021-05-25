@@ -1,6 +1,6 @@
-package br.com.trilhamobile.appnews.activity.network
+package br.com.trilhamobile.appnews.network
 
-import br.com.trilhamobile.appnews.activity.utils.Constantes.Companion.BASE_URL
+import br.com.trilhamobile.appnews.utils.Constantes.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
