@@ -8,6 +8,7 @@ class NewsPresenter(
         val view: ViewHome.View,
         private val dataSource: NewsDataSource
         ) : NewsHome.Presenter{
+
     override fun requestAll() {
         TODO("Not yet implemented")
     }
