@@ -33,6 +33,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
         presenter = NewsPresenter(this, dataSource)
         presenter.requestAll()
         configRecycle()
+        clickAdapter()
     }
 
     private fun configRecycle() {
@@ -43,6 +44,14 @@ class MainActivity : AbstractActivity(), ViewHome.View {
                     this@MainActivity,
                     DividerItemDecoration.VERTICAL
             ))
+        }
+    }
+
+    private fun clickAdapter() {
+        mainAdapter.setOnClickListener {article ->
+            val intent = Intent(this, ArticleActivity::class.java)
+            intent.putExtra("article", article)
+            startActivity(intent)
         }
     }
 
