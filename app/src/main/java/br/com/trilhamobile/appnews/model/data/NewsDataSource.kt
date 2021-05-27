@@ -1,14 +1,19 @@
 package br.com.trilhamobile.appnews.model.data
 
+import android.content.Context
 import android.media.browse.MediaBrowser
+import br.com.trilhamobile.appnews.model.Article
+import br.com.trilhamobile.appnews.model.db.ArticleDatabase
 import br.com.trilhamobile.appnews.network.RetrofitInstance
+import br.com.trilhamobile.appnews.presenter.favorite.FavoriteHome
 import br.com.trilhamobile.appnews.presenter.news.NewsHome
 import br.com.trilhamobile.appnews.presenter.search.SearchHome
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
-class NewsDataSource {
+class NewsDataSource(context: Context) {
+
+    private var db: ArticleDatabase = ArticleDatabase.invoke(context)
+    private var newsRepository: NewsRepository = NewsRepository(db)
 
     fun getBreakingNews(callback: NewsHome.Presenter) {
         GlobalScope.launch(Dispatchers.Main) {
@@ -36,6 +41,31 @@ class NewsDataSource {
             } else {
                 callback.onError(response.message())
                 callback.onComplete()
+            }
+        }
+    }
+
+    fun saveArticle(article: Article) {
+        GlobalScope.launch(Dispatchers.Main) {
+            newsRepository.updateInsert(article)
+        }
+    }
+
+    fun getAllArticle(callback: FavoriteHome) {
+        var allArticles: List<Article>
+        CoroutineScope(Dispatchers.IO).launch {
+            allArticles = newsRepository.getAll()
+
+            withContext(Dispatchers.Main) {
+                callback.showArticles(allArticles)
+            }
+        }
+    }
+
+    fun deleteArticle(article: Article?) {
+        GlobalScope.launch(Dispatchers.Main) {
+            article?.let { articleSafe ->
+                newsRepository.delete(articleSafe)
             }
         }
     }
