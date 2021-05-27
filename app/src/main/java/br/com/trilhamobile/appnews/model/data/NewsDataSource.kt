@@ -51,21 +51,21 @@ class NewsDataSource(context: Context) {
         }
     }
 
-    fun getAllArticle(callback: FavoriteHome) {
+    fun getAllArticle(callback: FavoriteHome.Presenter) {
         var allArticles: List<Article>
         CoroutineScope(Dispatchers.IO).launch {
             allArticles = newsRepository.getAll()
 
             withContext(Dispatchers.Main) {
-                callback.showArticles(allArticles)
+                callback.onSuccess(allArticles)
             }
         }
     }
 
     fun deleteArticle(article: Article?) {
         GlobalScope.launch(Dispatchers.Main) {
-            article?.let { articleSafe ->
-                newsRepository.delete(articleSafe)
+            article?.let { articleDeleted ->
+                newsRepository.delete(articleDeleted)
             }
         }
     }
