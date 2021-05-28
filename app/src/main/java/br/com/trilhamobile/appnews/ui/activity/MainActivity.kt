@@ -1,33 +1,37 @@
 package br.com.trilhamobile.appnews.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.trilhamobile.appnews.R
 import br.com.trilhamobile.appnews.adapter.MainAdapter
+import br.com.trilhamobile.appnews.databinding.ActivityMainBinding
 import br.com.trilhamobile.appnews.model.Article
 import br.com.trilhamobile.appnews.model.data.NewsDataSource
 import br.com.trilhamobile.appnews.presenter.ViewHome
 import br.com.trilhamobile.appnews.presenter.news.NewsPresenter
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AbstractActivity(), ViewHome.View {
+
+class MainActivity : AppCompatActivity(), ViewHome.View {
 
     private val mainAdapter by lazy {
         MainAdapter()
     }
 
     private lateinit var presenter: NewsPresenter
+    private lateinit var binding: ActivityMainBinding
 
-    override fun getLayout(): Int = R.layout.activity_main
-
-    override fun onInject() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val dataSource = NewsDataSource(this)
         presenter = NewsPresenter(this, dataSource)
@@ -37,13 +41,12 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     }
 
     private fun configRecycle() {
-        with(rvNews) {
+        with(binding.rvNews) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
-            addItemDecoration(DividerItemDecoration(
-                    this@MainActivity,
-                    DividerItemDecoration.VERTICAL
-            ))
+            DividerItemDecoration(
+                    this@MainActivity, DividerItemDecoration.VERTICAL
+            )
         }
     }
 
@@ -56,7 +59,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     }
 
     override fun showProgressBar() {
-        rvProgressBar.visibility = View.VISIBLE
+        binding.rvProgressBar.visibility = View.VISIBLE
     }
 
     override fun showFailure(message: String) {
@@ -64,7 +67,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     }
 
     override fun hideProgressBar() {
-        rvProgressBar.visibility = View.INVISIBLE
+        binding.rvProgressBar.visibility = View.INVISIBLE
     }
 
     override fun showArticles(articles: List<Article>) {
